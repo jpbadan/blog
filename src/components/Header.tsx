@@ -1,7 +1,7 @@
 import { Flex, Box, Spacer, Heading, HStack, Container, Link } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button"
 import styled from '@emotion/styled'
-import NextLink from 'next/link'
+import {FiSearch, FiSun} from 'react-icons/fi'
 
 interface HeaderProps {
     children?: JSX.Element[] | JSX.Element
@@ -27,10 +27,9 @@ function NavBarContainer ({ children, ...props }){
         pos="sticky"
         mb={8}
         p={3}
-
         {...props}
       >
-        {children}
+            {children}
       </StickyNav>
     )
   }
@@ -62,7 +61,7 @@ export default function Header(props: HeaderProps){
                    <LinkButton href="/">Home</LinkButton>
                </Box>
                <Box>
-                   <LinkButton href="/putterson">Posts</LinkButton>
+                   <LinkButton href="/putterson">Blog</LinkButton>
                </Box>
                <Box>
                    <LinkButton href="/putterson">Projects</LinkButton>
@@ -71,7 +70,10 @@ export default function Header(props: HeaderProps){
                    <LinkButton href="/putterson">Contact</LinkButton>
                </Box>
             </HStack>
-                <LinkButton href='/putterson'>O</LinkButton>
+            <HStack spacing={1} align="center">
+                <LinkButton href='/putterson'><FiSearch /></LinkButton>
+                <LinkButton href='/putterson'><FiSun /></LinkButton>
+            </HStack>
         </NavBarContainer>
     )
 }   
