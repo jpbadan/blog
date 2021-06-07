@@ -26,7 +26,9 @@ function NavBarContainer ({ children, ...props }){
         w="100%"
         pos="sticky"
         mb={8}
-        p={3}
+        // padding={2}
+        borderBlockEndWidth={1}
+        borderBlockEndColor='gray.800'
         {...props}
       >
             {children}
@@ -40,7 +42,10 @@ function LinkButton ({ children, ...props }){
             as='a' 
             variant='ghost'
             p={2}
-            _hover={{ backgroundColor:'none', color:'green.400'}}     
+            py={6}
+            borderBottomWidth={2}
+            borderBottomColor='black'
+            _hover={{ backgroundColor:'none', color:'cyan.800'}}     
             {...props}
             >
             {children}
@@ -53,8 +58,8 @@ export default function Header(props: HeaderProps){
         <NavBarContainer {...props}>
             <HStack spacing={1} align="center">
                 <Box>
-                    <Link href="/">
-                        <Heading size="lg" mr={6}>Aerospace.express</Heading>
+                    <Link href="/" _hover={{textDecoration:'none'}} _focus={{outline:'none'}}>
+                        <Heading size="lg" mr={8} paddingBottom={1}>Aerospace.Express</Heading>
                     </Link>
                 </Box>
                <Box>

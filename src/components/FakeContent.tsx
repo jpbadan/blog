@@ -1,4 +1,5 @@
-import { Text, Link, Spacer, Heading } from "@chakra-ui/layout";
+import { Text, Link, Spacer, Heading, Box } from "@chakra-ui/layout";
+import { FiArrowRight } from "react-icons/fi";
 
 
 export default function FakeContent(){
@@ -26,7 +27,7 @@ export default function FakeContent(){
       Heey putterson oh yaeh??dasf
       Heey putterson oh yaeh??df
       </Text>
-      <Link href={'/putterson'}><Heading size="md">Yeahyeah!</Heading></Link>
+      <Link href={'/putterson'}><Heading size="md"><Box as='span'>Yeahyeah!</Box><Box as='span'><FiArrowRight/></Box></Heading></Link>
       <Spacer mb={8}/>
       </>
     )
