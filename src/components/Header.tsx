@@ -43,8 +43,8 @@ function LinkButton ({ children, ...props }){
             variant='ghost'
             p={2}
             py={6}
-            borderBottomWidth={2}
-            borderBottomColor='black'
+            // borderBottomWidth={2}
+            // borderBottomColor='black'
             _hover={{ backgroundColor:'none', color:'cyan.800'}}     
             {...props}
             >
