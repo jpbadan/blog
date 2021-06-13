@@ -1,17 +1,35 @@
-import { Text, Link, Spacer, Container, Heading} from "@chakra-ui/layout";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps, InferGetStaticPropsType } from 'next'
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
 import { MDXProvider } from '@mdx-js/react';
 import MDX from '@mdx-js/runtime';
-
-
-import FakeContent from '../components/FakeContent'
+import FakeContent from '../components/blogComponents/FakeContent'
 import { Button } from "@chakra-ui/button"
+import listPosts from '../utils/listPosts';
 
 type PostProps = {
   mdx: string
+}
+
+
+
+function postsParams(){
+  const posts = []
+
+  listPosts().forEach(file => {
+    posts.push({
+        'params': 
+        {
+          'post': path.parse(file).name
+        }
+      }
+      )
+    }
+  )
+  
+  // console.log(posts)
+  return posts
 }
 
   export default function Post(props:PostProps){
@@ -31,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (props) => {
 
   const { content, data } = matter(rawFileSource)
 
-  console.log(props);
+  // console.log(props);
 
   return {
     props: {
@@ -43,11 +61,9 @@ export const getStaticProps: GetStaticProps = async (props) => {
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [
-      { params: { post: 'teste' } },
-      { params: { post: 'teste2' } },
-    ],
-    fallback: false,
+  
+  return{
+    paths: postsParams(),
+    fallback: false
   };
 };

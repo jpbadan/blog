@@ -1,17 +1,23 @@
-import { Text, Link, Spacer, Container, Heading } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+import { Text, Link, Spacer, Container, Heading, ListItem, List } from "@chakra-ui/layout";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps, InferGetStaticPropsType } from 'next'
+import listPosts from '../utils/listPosts';
 
-type Post = {
-  author: string
-  content: string
-}
+
 
 export default function Home({posts}:InferGetStaticPropsType<typeof getStaticProps>) {
+  const lista = posts.map((post) => 
+    <ListItem key={post}>
+      <Link href={post}>
+        {post}
+      </Link>
+    </ListItem>)
 
   return (
     <>
     <Container maxWidth="container.md">
-     <Text>Nosso autor é o {posts[0].author} e ele diz: </Text>
+     <Text>A lista dos nossos posts: </Text>
+      <List>{lista}</List>
      <Text as='strong'>{posts[0].content}</Text>
     </Container>
     
@@ -20,8 +26,8 @@ export default function Home({posts}:InferGetStaticPropsType<typeof getStaticPro
 }
 
 export const getStaticProps = async () => {
-  const [author, content] = ['Puttersonboy', 'hoje é o dia de cigarrim, Vamos fumar pra caraalho aqui é o ambiente de putterson porra yeah yeah eu disse']
-  const posts:Post[] = [{author, content}]
+  const posts = listPosts();
+  // console.log('olar = ',posts)
 
   return {
     props: {
