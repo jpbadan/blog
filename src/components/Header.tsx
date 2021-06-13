@@ -28,7 +28,7 @@ function NavBarContainer ({ children, ...props }){
         mb={8}
         // padding={2}
         borderBlockEndWidth={1}
-        borderBlockEndColor='gray.800'
+        borderBlockEndColor='gray.400'
         {...props}
       >
             {children}
@@ -36,7 +36,7 @@ function NavBarContainer ({ children, ...props }){
     )
   }
 
-function LinkButton ({ children, ...props }){
+function SectionButton ({ children, ...props }){
     return (
         <Button 
             as='a' 
@@ -63,21 +63,21 @@ export default function Header(props: HeaderProps){
                     </Link>
                 </Box>
                <Box>
-                   <LinkButton href="/">Home</LinkButton>
+                   <SectionButton href="/">Home</SectionButton>
                </Box>
                <Box>
-                   <LinkButton href="/putterson">Blog</LinkButton>
+                   <SectionButton href="/boso">Blog</SectionButton>
                </Box>
                <Box>
-                   <LinkButton href="/putterson">Projects</LinkButton>
+                   <SectionButton href="/bengoso">Projects</SectionButton>
                </Box>
                <Box>
-                   <LinkButton href="/putterson">Contact</LinkButton>
+                   <SectionButton href="/mulato">Contact</SectionButton>
                </Box>
             </HStack>
             <HStack spacing={1} align="center">
-                <LinkButton href='/putterson'><FiSearch /></LinkButton>
-                <LinkButton href='/putterson'><FiSun /></LinkButton>
+                <SectionButton href='/roludo'><FiSearch /></SectionButton>
+                <SectionButton href='/teste'><FiSun /></SectionButton>
             </HStack>
         </NavBarContainer>
     )
