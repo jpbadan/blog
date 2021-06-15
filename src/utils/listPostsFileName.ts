@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-export default function listPosts(){
+export default function listPostsFileName(){
     // Reads all posts that are .mdx and returns a JSON array
     const postsFolderPath = path.join(process.cwd(), 'posts')
     const posts = []

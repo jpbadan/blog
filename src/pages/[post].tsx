@@ -6,18 +6,20 @@ import { MDXProvider } from '@mdx-js/react';
 import MDX from '@mdx-js/runtime';
 import FakeContent from '../components/blogComponents/FakeContent'
 import { Button } from "@chakra-ui/button"
-import listPosts from '../utils/listPosts';
+import listPostsFileName from '../utils/listPostsFileName';
+import { Text } from '@chakra-ui/layout';
 
 type PostProps = {
   mdx: string
+  metaInformation: {
+    title:string
+  }
 }
 
-
-
-function postsParams(){
+function createPostPaths(){
   const posts = []
 
-  listPosts().forEach(file => {
+  listPostsFileName().forEach(file => {
     posts.push({
         'params': 
         {
@@ -32,15 +34,17 @@ function postsParams(){
   return posts
 }
 
-  export default function Post(props:PostProps){
-    const availableComponents = {FakeContent, Button}
-    return (
-      <MDXProvider components={availableComponents}>
-        <MDX>{props.mdx}</MDX>
-      </MDXProvider>
 
-    )
-  }
+export default function Post(props:PostProps){
+  const availableComponents = {FakeContent, Button}
+  return (
+    <MDXProvider components={availableComponents}>
+      <Text as='h1' color='red'>{props.metaInformation.title}</Text>
+      <MDX>{props.mdx}</MDX>
+    </MDXProvider>
+
+  )
+}
 
 export const getStaticProps: GetStaticProps = async (props) => {
   const folderPath = path.join(process.cwd(), 'posts')
@@ -48,8 +52,6 @@ export const getStaticProps: GetStaticProps = async (props) => {
   const rawFileSource = fs.readFileSync(filePath)
 
   const { content, data } = matter(rawFileSource)
-
-  // console.log(props);
 
   return {
     props: {
@@ -63,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   
   return{
-    paths: postsParams(),
+    paths: createPostPaths(),
     fallback: false
   };
 };
