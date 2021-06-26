@@ -8,6 +8,11 @@ import FakeContent from '../components/blogComponents/FakeContent'
 import { Button } from "@chakra-ui/button"
 import listPostsFileName from '../utils/listPostsFileName';
 import { Text } from '@chakra-ui/layout';
+import getAllPosts from '../utils/getAllPosts';
+import MdxPost from '../interfaces/PostProps';
+
+
+const blogPosts = getAllPosts();
 
 type PostProps = {
   mdx: string
@@ -35,13 +40,14 @@ function createPostPaths(){
 }
 
 
-export default function Post(props:PostProps){
+export default function Post({ ... posts }: MdxPost){
   const availableComponents = {FakeContent, Button}
   return (
     <MDXProvider components={availableComponents}>
-      <Text as='h1' color='red'>{props.metaInformation.title}</Text>
-      <MDX>{props.mdx}</MDX>
+      <Text as='h1' color='red'>{posts.props.title}</Text>
+      <MDX>{posts.content}</MDX>
     </MDXProvider>
+    // console.log(posts.props.title)
 
   )
 }
@@ -53,19 +59,30 @@ export const getStaticProps: GetStaticProps = async (props) => {
 
   const { content, data } = matter(rawFileSource)
 
+
+  const currentPost = blogPosts.filter(post => post.props.id == props.params.post)
+  console.log('AQUIIII', currentPost[0])
+
   return {
-    props: {
-      mdx: content,
-      metaInformation: data,
-    }
+    props: {... currentPost[0]}
   }
 }
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
+
+  const paths = blogPosts.map(post => 
+    (
+      {
+      'params': {
+                'post': post.props.id,
+              }
+            }
+          )
+        )
   
   return{
-    paths: createPostPaths(),
+    paths: paths,
     fallback: false
   };
 };
