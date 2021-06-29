@@ -3,8 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import listPostsFileName from './listPostsFileName';
 import MdxPost from '../interfaces/PostProps';
-import {keys} from 'ts-transformer-keys'
-import { mdx } from '@mdx-js/react';
 
 interface RegisterPostInterfaceDTO{
     id: any,
