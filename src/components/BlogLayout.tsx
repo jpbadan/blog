@@ -13,7 +13,7 @@ export default function BlogLayout({ children, frontMatter }) {
       w="100%"
       px={2}
     >
-      <Heading size='4xl' color='gray.500'>{frontMatter.title}</Heading>
+      <Heading size='4xl' color='gray.600'>{frontMatter.title}</Heading>
       {children}
     </Stack>
   );
