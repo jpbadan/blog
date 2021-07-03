@@ -36,7 +36,7 @@ export default function Post({ ...posts }: MdxPost) {
         w="100%"
         px={2}
       >
-        <Heading size='xl'>{posts.props.title}</Heading>
+        <Heading size='2xl'>{posts.props.title}</Heading>
         <MDX components={mdxStyle}>{posts.content}</MDX>
       </Stack>
     </MDXProvider >

@@ -1,12 +1,13 @@
-import { InferGetStaticPropsType } from 'next';
-import getAllPosts from '../utils/getAllPosts';
 import { Text, Link, Container, ListItem, List } from "@chakra-ui/layout";
+import { InferGetStaticPropsType } from 'next';
+import getAllPosts from "../utils/getAllPosts";
 
+const blogPosts = getAllPosts();
 
-export default function Index({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const postsList = posts.map((post) =>
     <ListItem key={post.props.id}>
-      <Link href={`/posts/${post.props.id}`}>
+      <Link href={post.props.id}>
         {post.props.title}
       </Link>
     </ListItem>
@@ -24,7 +25,7 @@ export default function Index({ posts }: InferGetStaticPropsType<typeof getStati
 
 export const getStaticProps = async () => {
 
-  const allPublishedPosts = getAllPosts().filter(post => post.props.isPublished);
+  const allPublishedPosts = blogPosts.filter(post => post.props.isPublished);
 
   return {
     props: {
