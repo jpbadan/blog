@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Chupa</title>
       </Head>
-      <Header />
+      {/* <Header /> */}
       <Component {...pageProps} />
     </ChakraProvider>
   );

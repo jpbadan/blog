@@ -45,10 +45,7 @@ function SectionButton({ children, ...props }) {
       py={6}
       // borderBottomWidth={2}
       // borderBottomColor='black'
-      _hover={{
-        backgroundColor: 'none', color: 'cyan.800'
-      }}
-
+      _hover={{ backgroundColor: 'none', color: 'cyan.800' }}
       {...props}
     >
       {children}

@@ -1,19 +1,19 @@
-import { Heading } from '@chakra-ui/layout';
+import { Heading, StackDivider } from '@chakra-ui/layout';
 import { Stack } from '@chakra-ui/react';
 
 export default function BlogLayout({ children, frontMatter }) {
   return (
     <Stack
       as="article"
-      spacing={8}
+      spacing={2}
       justifyContent="center"
       alignItems="flex-start"
-      m="0 auto 4rem auto"
+      m="1rem auto 2rem auto"
       maxWidth="700px"
       w="100%"
       px={2}
     >
-      <Heading size='4xl' color='gray.600'>{frontMatter.title}</Heading>
+      <Heading size='3xl' color='black' mb={2}>{frontMatter.title}</Heading>
       {children}
     </Stack>
   );

@@ -17,8 +17,8 @@ import Head from 'next/head';
 const CustomLink = (props) => {
   const { colorMode } = useColorMode();
   const color = {
-    light: 'blue.500',
-    dark: 'blue.500'
+    light: 'pink.500',
+    dark: 'pink.500'
   };
 
   const href = props.href;
@@ -116,12 +116,12 @@ const Hr = () => {
 };
 
 const MdxStyleComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
-  h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
-  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
-  h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
-  h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
-  h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
+  h1: (props) => <DocsHeading as="h1" size="xl" pt={5} fontWeight="bold" {...props} />,
+  h2: (props) => <DocsHeading as="h2" size="lg" pt={5} fontWeight="bold" {...props} />,
+  h3: (props) => <DocsHeading as="h3" size="md" pt={5} fontWeight="bold" {...props} />,
+  h4: (props) => <DocsHeading as="h4" size="sm" pt={5} fontWeight="bold" {...props} />,
+  h5: (props) => <DocsHeading as="h5" size="xs" pt={5} fontWeight="bold" {...props} />,
+  h6: (props) => <DocsHeading as="h6" size="xs" pt={5} fontWeight="bold" {...props} />,
   inlineCode: (props) => (
     <Code colorScheme="yellow" fontSize="0.84em" {...props} />
   ),
@@ -129,13 +129,13 @@ const MdxStyleComponents = {
   hr: Hr,
   a: CustomLink,
   p: (props) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
-  ul: (props) => <Box as="ul" pt={2} pl={20} ml={2} {...props} />,
-  ol: (props) => <Box as="ol" pt={2} pl={20} ml={2} {...props} />,
-  li: (props) => <Box as="li" pb={2} {...props} />,
+  ul: (props) => <Box as="ul" pt={0} pl={2} {...props} />,
+  ol: (props) => <Box as="ol" pt={0} pl={10} {...props} />,
+  li: (props) => <Box as="li" pb={1} pl={2} {...props} />,
   // blockquote: Quote,
 };
 
-const MdxFunctionalComponents = {
+const MdxCustomComponents = {
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
@@ -146,9 +146,9 @@ const MdxFunctionalComponents = {
 };
 
 const MdxComponents = {
-  ...MdxFunctionalComponents,
+  ...MdxCustomComponents,
   ...MdxStyleComponents
 };
 
-export { CustomLink, MdxFunctionalComponents, MdxStyleComponents };
+export { CustomLink, Hr, MdxCustomComponents, MdxStyleComponents };
 export default MdxComponents;
