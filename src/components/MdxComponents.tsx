@@ -129,7 +129,7 @@ const MdxStyleComponents = {
   hr: Hr,
   a: CustomLink,
   p: (props) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
-  ul: (props) => <Box as="ul" pt={0} pl={2} {...props} />,
+  ul: (props) => <Box as="ul" pt={0} pl={10} {...props} />,
   ol: (props) => <Box as="ol" pt={0} pl={10} {...props} />,
   li: (props) => <Box as="li" pb={1} pl={2} {...props} />,
   // blockquote: Quote,

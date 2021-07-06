@@ -70,6 +70,7 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Blog </MenuItem>
         <MenuItem to="/Projects">Projects </MenuItem>
         <MenuItem to="/Contact">Contact </MenuItem>
+        <MenuItem to="putterson.jpbadan.com">Joguinho</MenuItem>
         <MenuItem to="/boso" isLast>
           <Button
             size="sm"
