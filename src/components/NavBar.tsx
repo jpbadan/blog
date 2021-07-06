@@ -70,7 +70,6 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Blog </MenuItem>
         <MenuItem to="/Projects">Projects </MenuItem>
         <MenuItem to="/Contact">Contact </MenuItem>
-        <MenuItem to="putterson.jpbadan.com">Joguinho</MenuItem>
         <MenuItem to="/boso" isLast>
           <Button
             size="sm"
@@ -97,8 +96,9 @@ const NavBarContainer = ({ children, ...props }) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
-      p={8}
+      mb={2}
+      px={8}
+      py={4}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["black", "black", "primary.700", "primary.700"]}
       {...props}
@@ -108,4 +108,4 @@ const NavBarContainer = ({ children, ...props }) => {
   );
 };
 
-export default NavBar;;;
+export default NavBar;
