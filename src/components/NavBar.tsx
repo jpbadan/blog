@@ -32,6 +32,7 @@ const MenuIcon = () => (
   <>
     <title>Menu</title>
     <IoIosMenu size={24} />
+
   </>
 );
 
@@ -70,14 +71,14 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Blog </MenuItem>
         <MenuItem to="/Projects">Projects </MenuItem>
         <MenuItem to="/Contact">Contact </MenuItem>
-        <MenuItem to="/boso" isLast>
+        <MenuItem to="/boso" >
           <Button
             size="sm"
             rounded="md"
-            color={["primary.500", "primary.500", "black", "black"]}
-            bg={["gray.200", "gray.200", "primary.500", "primary.500"]}
+            color={["primary.500", "primary.500", "black"]}
+            bg={["red.200", "green.200", "blue.500"]}
             _hover={{
-              bg: ["primary.100", "primary.100", "primary.600", "primary.600"]
+              bg: ["primary.100", "primary.100", "red.600"]
             }}
           >
             Login

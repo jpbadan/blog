@@ -10,7 +10,7 @@ export default function Index({ posts }: InferGetStaticPropsType<typeof getStati
       spacing={10}
       justifyContent="space-between"
       m="0 auto 0 auto"
-      maxWidth="sm"
+      maxWidth={["sm", "md", "xl"]}
     >
       <ListItem key={post.props.id}>
         <LinkBox as="article" maxW="md" p="5" mb="3" borderWidth="1px" rounded="md" >
@@ -35,14 +35,14 @@ export default function Index({ posts }: InferGetStaticPropsType<typeof getStati
       <Stack
         as="article"
         spacing="5"
-        justifyContent="center"
-        alignItems="flex-start"
+        justifyContent="flex-start"
+        alignItems="center"
         m="0 auto 4rem auto"
         maxWidth="container.md"
         w="100%"
         px={5}
       >
-        <Heading color='gray.600'>A Lista dos nossos posts: </Heading>
+        <Heading color={['gray.600', 'blue.400', 'red.500']}>A Lista dos nossos posts: </Heading>
         <List>{postsList}</List>
       </Stack>
     </>
