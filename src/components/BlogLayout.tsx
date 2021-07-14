@@ -1,4 +1,6 @@
 import { Heading, StackDivider } from '@chakra-ui/layout';
+
+import { useColorModeValue } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/react';
 
 export default function BlogLayout({ children, frontMatter }) {
@@ -13,7 +15,15 @@ export default function BlogLayout({ children, frontMatter }) {
       w="100%"
       px={2}
     >
-      <Heading size='3xl' color='black' mb='16'>{frontMatter.title}</Heading>
+      <Heading
+        color={useColorModeValue('gray.600', 'gray.400')}
+        fontSize="7xl"
+        fontWeight="semibold"
+        textTransform="uppercase"
+        letterSpacing="wider"
+      >
+        {frontMatter.title}
+      </Heading>
       {children}
     </Stack>
   );

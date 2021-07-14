@@ -1,111 +1,142 @@
-import React from "react";
-import { Link, Box, Flex, Text, Button, Stack, Divider } from "@chakra-ui/react";
-import { IoMdClose, IoIosMenu, IoMdMenu } from 'react-icons/io';
+import {
+  Box,
+  Stack,
+  StackDivider,
+  Heading,
+  useColorModeValue,
+  ButtonGroup,
+  ButtonGroupProps,
+  chakra,
+  HTMLChakraProps,
+  Button,
+  Input,
+  Text,
+  useToken,
+  IconButton,
+  Link,
+  SimpleGrid,
+  SimpleGridProps,
+  TextProps
+} from '@chakra-ui/react';
+
+import * as React from 'react';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { GiAirplaneDeparture } from 'react-icons/gi';
 import { BiHeart, BiCopyright } from 'react-icons/bi';
+import { HeadingProps } from '@chakra-ui/layout';
 
+import Logo from './Logo';
 
-
-const Footer = (props) => {
-
-
-  return (
-    <>
-
-      <NavBarContainer {...props}>
-        <Box
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Divider my={['2', '4', '8']} w={['sm', 'md', '2xl']} />
-          <Stack
-            spacing={[8, 12, 16]}
-            align="center"
-            justify={["center", "center", "center"]}
-            direction={["column", "row", "row"]}
-            mt={[4, 4, 4]}
-          >
-            <MenuItem to="/">Home</MenuItem>
-            <MenuItem to="/">Blog </MenuItem>
-            <MenuItem to="/Projects">Projects </MenuItem>
-            <MenuItem to="/Contact">Contact </MenuItem>
-          </Stack>
-
+const Footer = () => (
+  <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" pt="36" pb="12" px={{ base: '4', md: '8' }}>
+    <Stack spacing="10" divider={<StackDivider />}>
+      <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ base: '10', lg: '28' }}>
+        <Box flex="1">
+          <Logo
+            w='auto'
+            color={["black", "black", "primary.500", "primary.500"]}
+          />
         </Box>
-
-      </NavBarContainer>
-      <FooterLiner />
-
-    </>
-  );
-};
-
-const MenuItem = ({ children, to = "/", ...rest }) => {
-  return (
-    <Link href={to}>
-      <Text display="block" {...rest}>
-        {children}
-      </Text>
-    </Link>
-  );
-};
-
-const NavBarContainer = ({ children, ...props }) => {
-  return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="center"
-      wrap="wrap"
-      w="100%"
-      mb={2}
-      px={8}
-      py={4}
-      bg={["primary.500", "primary.500", "transparent", "transparent"]}
-      color={["black", "black", "primary.700", "primary.700"]}
-      {...props}
-    >
-      {children}
-    </Flex>
-  );
-};
-
-const FooterLiner = ({ ...props }) => {
-  return (
-    <Box
-      flexBasis={{ base: "100%", md: "auto" }}>
-
+        <Stack direction={{ base: 'column', md: 'row' }} spacing={{ base: '10', md: '20' }}>
+          <LinkGrid spacing={{ base: '10', md: '20', lg: '28' }} flex="1" />
+          <SubscribeForm width={{ base: 'full', md: 'sm' }} />
+        </Stack>
+      </Stack>
       <Stack
-        direction='row'
-        align="center"
-        justify='center'
-        m={[5, 7, 10]}
-        alignItems='center'
-        textColor='gray.500'
-        fontSize={['xx-small', 'small', 'medium']}
-        {...props}
+        direction={{ base: 'column-reverse', md: 'row' }}
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <Box as='span'>
-          <BiCopyright style={{ margin: -5 }} />
-        </Box>
-        <Text>
-          2021 João Pedro Badan | Made with
-        </Text>
-        <Box as='span'>
-          <BiHeart style={{ margin: -5 }} />
-        </Box>
-        <Text>
-          in Toulouse
-        </Text>
-        < Box as='span' >
-          <GiAirplaneDeparture style={{ margin: -3 }} />
-        </Box >
+        <Copyright />
+        <SocialMediaLinks />
+      </Stack>
+    </Stack>
+  </Box>
+);
+
+const Copyright = (props: TextProps) => (
+  <>
+    <Text fontSize="sm" {...props}>
+      &copy; {new Date().getFullYear()} João Pedro BADAN, All rights reserved. Made with 💜 &nbsp; in Toulouse 🛫
+    </Text>
+
+  </>
+);
+
+const FooterHeading = (props: HeadingProps) => (
+  <Heading
+    as="h4"
+    color={useColorModeValue('gray.600', 'gray.400')}
+    fontSize="sm"
+    fontWeight="semibold"
+    textTransform="uppercase"
+    letterSpacing="wider"
+    {...props}
+  />
+);
+
+const LinkGrid = (props: SimpleGridProps) => (
+  <SimpleGrid columns={2} {...props}>
+    <Box minW="130px">
+      <FooterHeading mb="4">JPBADAN.COM</FooterHeading>
+      <Stack>
+        <Link href='/'>Home</Link>
+        <Link href='/'>Blog</Link>
+        <Link href='https://putterson.jpbadan.com'>Projects</Link>
       </Stack>
     </Box>
+    <Box minW="130px">
+      <FooterHeading mb="4">Contact</FooterHeading>
+      <Stack>
+        <Link href='/about'>About Me</Link>
+        <Link href='mailto:jpbadan@gmail.com'>Reach me out</Link>
+      </Stack>
+    </Box>
+  </SimpleGrid>
+);
 
+
+
+
+const SocialMediaLinks = (props: ButtonGroupProps) => (
+  <ButtonGroup variant="ghost" color="gray.600" {...props}>
+    <IconButton as="a" href="https://www.linkedin.com/in/jpbadan" aria-label="LinkedIn" icon={<FaLinkedin fontSize="20px" />} />
+    <IconButton as="a" href="https://www.github.com/jpbadan" aria-label="GitHub" icon={<FaGithub fontSize="20px" />} />
+  </ButtonGroup>
+);
+
+
+
+const SubscribeForm = (props: HTMLChakraProps<'form'>) => {
+  return (
+    <chakra.form {...props} onSubmit={(e) => e.preventDefault()}>
+      <Stack spacing="4">
+        <FooterHeading>Subscribe to the newsletter</FooterHeading>
+        <Text>Get emails about aerospace, tech, and early access to new articles.</Text>
+        <Stack spacing="4" direction={{ base: 'column', md: 'row' }}>
+          <Input
+            bg={useColorModeValue('white', 'inherit')}
+            placeholder="Enter your email"
+            type="email"
+            required
+            focusBorderColor={useColorModeValue('green.500', 'green.300')}
+            _placeholder={{
+              opacity: 1,
+              color: useColorModeValue('gray.500', 'whiteAlpha.700'),
+            }}
+          />
+          <Button
+            type="submit"
+            colorScheme="green"
+            flexShrink={0}
+            width={{ base: 'full', md: 'auto' }}
+          >
+            Subscribe
+          </Button>
+        </Stack>
+      </Stack>
+    </chakra.form>
   );
-
 };
-
-
 
 export default Footer;
