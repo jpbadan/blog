@@ -100,7 +100,7 @@ const LinkGrid = (props: SimpleGridProps) => (
     <Box minW="130px">
       <FooterHeading mb="4">Contact</FooterHeading>
       <Stack>
-        <Link href='/about'>About Me</Link>
+        <Link href='/about'>About</Link>
         <Link href='mailto:jpbadan@gmail.com'>Reach me out</Link>
       </Stack>
     </Box>

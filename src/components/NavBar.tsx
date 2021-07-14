@@ -70,8 +70,8 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/">Blog </MenuItem>
         <MenuItem to="/Projects">Projects </MenuItem>
-        <MenuItem to="/Contact">Contact </MenuItem>
-        <MenuItem to="/boso" >
+        <MenuItem to="/Contact">About </MenuItem>
+        {/* <MenuItem to="/boso" >
           <Button
             size="sm"
             rounded="md"
@@ -83,7 +83,7 @@ const MenuLinks = ({ isOpen }) => {
           >
             Login
           </Button>
-        </MenuItem>
+        </MenuItem> */}
       </Stack>
     </Box>
   );
