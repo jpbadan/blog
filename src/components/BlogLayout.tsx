@@ -17,7 +17,7 @@ export default function BlogLayout({ children, frontMatter }) {
     >
       <Heading
         color={useColorModeValue('gray.600', 'gray.400')}
-        fontSize="7xl"
+        fontSize="4xl"
         fontWeight="semibold"
         textTransform="uppercase"
         letterSpacing="wider"

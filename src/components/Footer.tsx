@@ -28,7 +28,7 @@ import { HeadingProps } from '@chakra-ui/layout';
 import Logo from './Logo';
 
 const Footer = () => (
-  <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" pt="36" pb="12" px={{ base: '4', md: '8' }}>
+  <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" pt={[12, 12, 24]} pb="12" px={{ base: '4', md: '8' }}>
     <Stack spacing="10" divider={<StackDivider />}>
       <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ base: '10', lg: '28' }}>
         <Box flex="1">
@@ -47,20 +47,32 @@ const Footer = () => (
         justifyContent="space-between"
         alignItems="center"
       >
-        <Copyright />
-        <SocialMediaLinks />
+        <Copyright fontSize="sm" />
+        <SocialMediaLinks pb={[8, 0, 0]} />
       </Stack>
     </Stack>
   </Box>
 );
 
 const Copyright = (props: TextProps) => (
-  <>
-    <Text fontSize="sm" {...props}>
-      &copy; {new Date().getFullYear()} João Pedro BADAN, All rights reserved. Made with 💜 &nbsp; in Toulouse 🛫
-    </Text>
+  <Box >
+    <Stack spacing="2" direction={{ base: 'column', md: 'column' }} alignItems={['center', 'center', 'start']}>
+      <Text {...props} >
+        &copy; {new Date().getFullYear()} João Pedro BADAN, All rights reserved.</Text>
+      <Box as='span' d='flex' alignItems='center'>
+        <Text {...props}>Made with</Text>
+        <BiHeart style={{ marginLeft: 2, marginRight: 2 }} />
+        <Text  {...props}>
+          in Toulouse
+        </Text>
+        <GiAirplaneDeparture style={{ marginLeft: 2, marginRight: 2 }} />
+      </Box>
+    </Stack>
 
-  </>
+
+
+
+  </ Box>
 );
 
 const FooterHeading = (props: HeadingProps) => (
