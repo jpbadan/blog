@@ -11,7 +11,7 @@ import {
 
 const BlogCard = ({ ...post }) => {
   return (
-    <Box bg={useColorModeValue('white', 'gray.900')} boxShadow={'sm'} rounded={'md'} p={4} borderColor='gray.200' borderWidth='1px' maxWidth={['xs', 'md', 'xl']} Maxheight={[200, 200, 250]}>
+    <Box bg={useColorModeValue('white', 'gray.900')} boxShadow={'sm'} rounded={'md'} p={4} borderColor='gray.200' borderWidth='1px' maxWidth={['sm', 'md', 'xl']} Maxheight={[200, 200, 250]}>
       <Stack>
         <LinkOverlay href={`/posts/${post.props.id}`}>
           <Heading color={useColorModeValue('gray.700', 'white')} fontSize={['md', 'xl', '2xl']} fontFamily={'body'}>
