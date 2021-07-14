@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* <Header /> */}
       <NavBar />
       <Component {...pageProps} />
+      <Footer />
     </ChakraProvider>
   );
 }

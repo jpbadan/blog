@@ -12,7 +12,7 @@ const NavBar = (props) => {
   return (
     <NavBarContainer {...props}>
       <Logo
-        w="250px"
+        w='auto'
         color={["black", "black", "primary.500", "primary.500"]}
       />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
@@ -63,9 +63,9 @@ const MenuLinks = ({ isOpen }) => {
       <Stack
         spacing={8}
         align="center"
-        justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["column", "row", "row", "row"]}
-        pt={[4, 4, 0, 0]}
+        justify={["center", "space-between", "flex-end"]}
+        direction={["column", "row", "row"]}
+        pt={[4, 4, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/">Blog </MenuItem>
