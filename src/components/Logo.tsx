@@ -6,11 +6,16 @@ export default function Logo(props) {
     <Box {...props} >
       <LinkBox >
         <LinkOverlay href='/' >
-          <Button fontSize="4xl" background='inherit' _hover={{ backgroundColor: 'inherit' }} _focus={{ outline: 'none' }} _active={{ backgroundColor: 'inherit' }}>
+          <Button fontSize="4xl"
+            background='inherit'
+            px='0'
+            _hover={{ backgroundColor: 'inherit' }}
+            _focus={{ outline: 'none' }}
+            _active={{ backgroundColor: 'inherit' }}>
             🐵 🙉 🙊
           </Button>
         </LinkOverlay>
       </LinkBox>
-    </Box>
+    </Box >
   );
 }

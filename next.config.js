@@ -15,4 +15,8 @@ module.exports = {
     }
     return config;
   },
+  images: {
+    domains: ['img.traveltriangle.com'],
+  },
 };
+
